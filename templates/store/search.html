@@ -1,0 +1,17 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+
+<h1>Produsele Cautate</h1>
+<div class="container">
+    {%for produs in produse%}
+        <div class="image">
+            <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+            <h3>{{produs.title}}</h3>
+            <h3>{{produs.price}} lei</h3>
+            <a class="add-cart cart4" href="#">Add Cart</a>
+            <input type="hidden" value="20" />
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

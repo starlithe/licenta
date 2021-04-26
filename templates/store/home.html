@@ -1,0 +1,39 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+<h1>Cele mai vizitate produse</h1>
+<div class="container">
+  {%for produs in vizitate %}
+  <div class="image">
+            <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+            <h3>{{produs.title}}</h3>
+            <h3>{{produs.price}} lei</h3>
+            <a class="add-cart cart4" href="#">Add Cart</a>
+            <input type="hidden" value="20" />
+        </div>
+  {% endfor %}
+</div>
+
+<h1>Frizerii nostri</h1>
+<div class="container2">
+  {%for frizer in frizeri%}
+  <div class="claudiu">
+    <a><img src="{{frizer.image.url }}" alt="" /></a>
+    <h3>{{frizer.title}}</h3>
+    <a class="add-cart frizer1" href="#">Viziteaza frizerul</a>
+    <input type="hidden" value="20" />
+  </div>
+  {% endfor %}
+</div>
+
+<h1>Pachete disponibile</h1>
+<div class="container3">
+  {%for pachet in pachete%}
+  <div class="pachete">
+    <img src="{{pachet.image.url}}" />
+    <h3>{{pachet.title}}</h3>
+  </div>
+  {%endfor%}
+</div>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+{% endblock %}

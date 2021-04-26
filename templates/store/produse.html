@@ -1,0 +1,44 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+
+<h1>Masini de tuns</h1>
+<div class="container">
+    {%for produs in produse%}
+        <div class="image">
+            <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+            <h3>{{produs.title}}</h3>
+            <h3>{{produs.price}} lei</h3>
+            <a class="add-cart cart4" href="#">Add Cart</a>
+            <input type="hidden" value="20" />
+        </div>
+    {% endfor %}
+</div>
+
+
+<h1>Masini de contur</h1>
+<div class="container">
+    {%for produs in produse1%}
+        <div class="image">
+            <a href="{%url 'store:produs_detail' slug=produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+            <h3>{{produs.title}}</h3>
+            <h3>{{produs.price}} lei</h3>
+            <a class="add-cart cart4" href="#">Add Cart</a>
+            <input type="hidden" value="20" />
+        </div>
+    {% endfor %}
+</div>
+
+<h1>Shavere</h1>
+<div class="container">
+    {%for produs in produse2%}
+        <div class="image">
+            <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+            <h3>{{produs.title}}</h3>
+            <h3>{{produs.price}} lei</h3>
+            <a class="add-cart cart4" href="#">Add Cart</a>
+            <input type="hidden" value="20" />
+        </div>
+    {% endfor %}
+</div>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+{% endblock %}

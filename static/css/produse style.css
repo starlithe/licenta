@@ -1,0 +1,374 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  margin-left: 50px;
+  margin-top: 50px;
+  font-size: 25px;
+}
+h6 {
+  margin-left: 45%;
+  margin-top: 50px;
+  font-size: 25px;
+  
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+header {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  position: relative;
+}
+.Logo {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  width: 150px;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: rgba(10, 10, 10, 0.3);
+}
+
+nav {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px 60px 0 60px;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+nav li span {
+  padding-left: 5px;
+}
+
+li a {
+  padding: 5px;
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.cart ion-icon {
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+.cart a {
+  background-color: blue;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.container,
+.container-products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 100px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+.container2,
+.container3 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  margin-left: 0;
+  padding-bottom: 100px;
+}
+
+.image {
+  width: 200px;
+  margin-right: 20px;
+  margin-top: 50px;
+  margin-left: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.image img {
+  width: 150px;
+  height: 150px;
+}
+
+.add-cart {
+  position: absolute;
+  width: 100%;
+  background-color: darkgrey;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.image:hover .cart1,
+.image:hover .cart2,
+.image:hover .cart3,
+.image:hover .cart4,
+.image:hover .cart5,
+.image:hover .cart6,
+.image:hover .cart7,
+.image:hover .cart8,
+.image:hover .cart9,
+.image:hover .cart10,
+.image:hover .cart11,
+.image:hover .cart12 {
+  bottom: 50px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: none;
+}
+.viziteazafrizer,
+.viziteazapachet {
+  position: absolute;
+  width: 75%;
+  background-color: darkgrey;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+  text-align: center;
+}
+
+.image:hover .frizer1,
+.image:hover .frizer2,
+.image:hover .frizer3,
+.image:hover .frizer4 {
+  bottom: 50px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: none;
+}
+.image:hover .pachet1,
+.image:hover .pachet2,
+.image:hover .pachet3,
+.image:hover .pachet4 {
+  bottom: 50px;
+  opacity: 1;
+  padding: 10px;
+  text-decoration: none;
+}
+
+/* Dropdown Button */
+.dropbutton {
+  background-color: #4caf50;
+  color: blue;
+  font-size: 16px;
+  border: none;
+  padding: 5px;
+  background-color: #fff;
+  text-decoration: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* ----------------- CART PAGE --------------- */
+
+.container-products {
+  max-width: 650px;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+.container-products ion-icon {
+  font-size: 25px;
+  color: blue;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.product-header {
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: 4px solid lightgray;
+  margin: 0 auto;
+}
+
+.product-title {
+  width: 45%;
+}
+
+.price {
+  width: 15%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.quantity {
+  width: 30%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.total {
+  width: 10%;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+
+.product {
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.product ion-icon {
+  cursor: pointer;
+}
+
+.products {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.products img {
+  width: 75px;
+}
+
+.basketTotalContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.basketTotalTitle {
+  width: 30%;
+}
+
+.basketTotal {
+  width: 10%;
+}
+
+@media (max-width: 500px) {
+  nav h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .sm-hide {
+    display: none;
+  }
+
+  .products,
+  .product-header {
+    justify-content: center;
+  }
+
+  .basketTotalContainer {
+    padding-right: 8%;
+  }
+}
+.delivery-details {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+}
+.comanda{
+    background-color: blue;
+    border: 1px solid blue;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 40%;
+}
+.adresalivrare{
+    display: table;
+    margin-left: 40%;
+}
+.select{
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+}
+.avisited{
+  text-decoration: none;
+  color:blue;
+}

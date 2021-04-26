@@ -1,0 +1,90 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+{{ produs.name }}
+{% endblock %}
+<link rel="stylesheet" href="/static/css/styles.css" />
+{% block content %}
+
+
+{% comment %} <body>
+        <div class="containerproduct">
+            <div>
+                <div><img class="pozaprodus" src="{{produs.image.url}}" alt="WahlMagicClip"> </div>
+            </div>
+            <div>
+                <h1>Wahl Magic Clip </h1> <br>
+                            <div class="descriere"> <a>{{produs.description}}</a><br>
+                            </div>
+                <a class="pretprodus">Pret  {{produs.price}}  lei</a>
+                <div class="col-6">
+                                <label for="select">Qty</label>
+                                <select id="select">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+
+                            </div>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+        </div>
+{% endcomment %}
+
+<div class="container">
+    <main class="pt-5">
+        <div class="row g-3">
+            <div class="col-md-5 col-lg-5 order-md-first bg-light">
+                <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ produs.image.url }}">
+            </div>
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                <h1 class="mb-0 h4">{{ produs.title }}</h1>
+                <div class="descriere">
+                    <p id="desriereprodus">{{ produs.description }}</p>
+                </div>
+                <div class="border">
+                    <div class="col border-bottom">
+                        <div class="row p-3">
+                            <div class="col-6">Price</div>
+                            <div class="col-6 text-end"><span class="h4 fw-bold">{{ produs.price }} lei</span></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row p-3">
+                            <div class="col-6">
+                                <label for="select">Qty</label>
+                                <select id="select">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+                            </div>
+                            
+                            
+                            <div class="col-6 text-end"><button type="button" class="comanda">Add to
+                                    basket</button>
+                            </div>
+                            {%if produs.in_stock%}
+                            <a class="in_stock">In Stoc!! </a>
+
+                            {%else%}
+                            <a class="in_stock">Nu este in stoc!! </a>
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+{% endblock %}
+
+
