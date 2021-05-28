@@ -56,22 +56,27 @@
                             <div class="col-6">
                                 <label for="select">Qty</label>
                                 <select id="select">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
                                 </select>
                             </div>
                             
                             
-                            <div class="col-6 text-end"><button type="button" class="comanda">Add to
-                                    basket</button>
+                            <div class="col-6 text-end">
+                            {%if produs.in_stock%}
+                            <button type="button" class="comanda" onclick="addcart({{produs.id}})">Add to basket</button>
+
+                            {%else%}
+                            <button type="button" class="comanda1">Add to basket</button>
+                            {% endif %}
                             </div>
                             {%if produs.in_stock%}
                             <a class="in_stock">In Stoc!! </a>
 
                             {%else%}
-                            <a class="in_stock">Nu este in stoc!! </a>
+                            <a class="not_stock">Nu este in stoc!! </a>
 
                             {% endif %}
 
@@ -85,6 +90,33 @@
 </div>
 
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+<script> 
+    function addcart(id) {
+            console.log(id);
+            var quantity = document.getElementById("select").value;
+            
+            $.ajax({
+                type: 'POST',
+                url: '{% url "store:add_cart" %}',
+                data: {
+                    produsid: id,
+                    quantity: quantity,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'add',
+                },
+                success: function(json) {
+                    if(json['succes'] === 'succes') {
+                        console.log('HAIDEEEE');
+                    }
+                },
+                error: function (xhr, errmsg, err) {
+
+                }
+            });
+            console.log(quantity);
+        }
+</script> 
 {% endblock %}
 
 

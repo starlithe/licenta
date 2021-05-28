@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Category, Product, Frizer, Pachet, Produs
+from .models import Category, Product, Frizer, Pachet, Produs, Cart
 
 
 @admin.register(Category)
@@ -32,3 +32,5 @@ class FrizerAdmin(admin.ModelAdmin):
 admin.site.register(Pachet)
 class PachetAdmin(admin.ModelAdmin):
     list_display = ['title']
+
+admin.site.register(Cart)

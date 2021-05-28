@@ -12,6 +12,8 @@ urlpatterns = [
     path('search/<slug:category_slug>/', views.category_list, name='category_list'),
     path('produse/', views.produse, name='produse'),
     path('search/', views.search, name='produsecautate'),
+    path('cart/', views.cart, name='cart'),
+    path('cart-add/', views.add_cart, name='add_cart'),
     path('account/', include('accounts.urls', namespace='accounts')),
     path('account/', include ('django.contrib.auth.urls')),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

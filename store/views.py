@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
-
-from .models import Category, Product, Frizer, Pachet, Produs
+from django.http import JsonResponse
+from .models import Category, Product, Frizer, Pachet, Produs, Cart
 
 
 def categories(request):
@@ -41,3 +41,27 @@ def produs_detail(request, slug):
 def search(request):
     produsecautate = Produs.objects.all()
     return render(request, 'store/search.html',{"produsecautate":produsecautate})
+
+def cart(request):
+    produse_cart = Cart.objects.filter(utilizator=request.user)
+    total=0
+    for produs in produse_cart.all():
+        total = total+ produs.cart.price*produs.quantity
+
+    return render(request, 'store/cart.html', {"produse_cart": produse_cart, "total":total})
+
+
+def add_cart(request):
+    if request.method == "POST":
+        if request.POST.get('action') == "add":
+            id = int(request.POST.get("produsid"))
+            cantitate = int(request.POST.get("quantity"))
+            produs = get_object_or_404(Cart, id=id)
+            print("daasdas")
+
+            Cart.objects.create(utilizator=request.user, cart=produs, quantity=cantitate)
+
+        return JsonResponse({"succes": "succes"})
+
+
+

@@ -73,6 +73,8 @@ class Pachet(models.Model):
     def __str__(self):
         return self.title
 
+
+
 class Produs(models.Model):
     category = models.ForeignKey(Category, related_name='produs', on_delete=models.CASCADE)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='produs_creator')
@@ -112,3 +114,10 @@ class Produs(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Cart(models.Model) :
+    utilizator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_creator')
+    cart = models.ForeignKey(Produs, on_delete=models.CASCADE)
+    quantity=models.IntegerField()
+

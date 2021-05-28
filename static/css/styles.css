@@ -377,6 +377,22 @@ li a {
 .comanda:hover{
   transform: scale(1.2);
 }
+.comanda1{
+    background-color: rgb(95, 92, 92);
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 40%;
+    transition: 250ms all;
+}
+
 .adresalivrare{
     display: table;
     margin-left: 40%;
@@ -519,6 +535,10 @@ footer{
   box-shadow:5px 10px 8px #888888;
 }
 .in_stock{
+  color: black;
+  text-shadow: 2px 2px 5px green;
+}
+.not_stock{
   color: black;
   text-shadow: 2px 2px 5px red;
 }
