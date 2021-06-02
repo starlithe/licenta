@@ -312,10 +312,19 @@ li a {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
+
 }
+
+.products p{
+  max-width: 20ch;
+
+}
+.price p 
 
 .products img {
   width: 75px;
+  height: 75px;
 }
 
 .basketTotalContainer {

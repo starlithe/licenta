@@ -56,8 +56,8 @@ def add_cart(request):
         if request.POST.get('action') == "add":
             id = int(request.POST.get("produsid"))
             cantitate = int(request.POST.get("quantity"))
-            produs = get_object_or_404(Cart, id=id)
-            print("daasdas")
+            produs = get_object_or_404(Produs, id=id)
+            
 
             Cart.objects.create(utilizator=request.user, cart=produs, quantity=cantitate)
 

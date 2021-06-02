@@ -7,7 +7,7 @@
             <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
             <h3>{{produs.title}}</h3>
             <h3>{{produs.price}} lei</h3>
-            <a class="add-cart cart4" href="#">Add Cart</a>
+            <a class="add-cart cart4"  onclick="addcart({{produs.id}})" href="#">Add Cart</a>
             <input type="hidden" value="20" />
         </div>
     {% endfor %}
@@ -21,7 +21,7 @@
             <a href="{%url 'store:produs_detail' slug=produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
             <h3>{{produs.title}}</h3>
             <h3>{{produs.price}} lei</h3>
-            <a class="add-cart cart4" href="#">Add Cart</a>
+            <a class="add-cart cart4"  onclick="addcart({{produs.id}})" href="#">Add Cart</a>
             <input type="hidden" value="20" />
         </div>
     {% endfor %}
@@ -34,11 +34,39 @@
             <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
             <h3>{{produs.title}}</h3>
             <h3>{{produs.price}} lei</h3>
-            <a class="add-cart cart4" href="#">Add Cart</a>
+            <a class="add-cart cart4"  onclick="addcart({{produs.id}})" href="#">Add Cart</a>
             <input type="hidden" value="20" />
         </div>
     {% endfor %}
 </div>
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+<script> 
+    function addcart(id) {
+            console.log(id);
+            const quantity = 1;
+            
+            $.ajax({
+                type: 'POST',
+                url: '{% url "store:add_cart" %}',
+                data: {
+                    produsid: id,
+                    quantity: quantity,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'add',
+                },
+                success: function(json) {
+                    if(json['succes'] === 'succes') {
+                        console.log('HAIDEEEE');
+                    }
+                },
+                error: function (xhr, errmsg, err) {
+
+                }
+            });
+            console.log(quantity);
+        }
+</script>
+
 
 {% endblock %}
