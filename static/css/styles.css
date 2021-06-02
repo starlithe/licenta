@@ -317,10 +317,9 @@ li a {
 }
 
 .products p{
-  max-width: 20ch;
+  max-width: 150px;
 
 }
-.price p 
 
 .products img {
   width: 75px;
@@ -646,4 +645,44 @@ height: 25px;
     transition: 250ms all;
     align-items: center;
     margin-left: 40%;
+}
+
+
+/* Cart */
+
+.cart-pret {
+  width: 700px;
+  margin: 2rem auto;
+  /* border: 1px solid black; */
+}
+
+.cart-pret .header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 2px solid black;
+}
+
+.cart-pret :is(.header, .products) :is(.price, .quantity, .delete) {
+  width: 100px;
+  margin: auto;
+}
+
+.cart-pret :is(.header, .products) .produs {
+  width: 300px;
+}
+
+.cart-pret .products .produs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-pret .products {
+  border-bottom: 1px solid black;
+}
+
+.cart-pret h3 {
+  margin-left: 2rem;
+  margin-top: 2rem;
 }

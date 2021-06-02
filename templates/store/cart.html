@@ -1,5 +1,5 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
-    <div class="container-products">
+    <!-- <div class="container-products">
         <div class="product-header">
             <h5 class="product-title">PRODUCT</h5>
             <h5 class="price sm-hide">PRICE</h5>
@@ -21,10 +21,41 @@
 
             
         </div>
+        
         {% endfor %}
         <h1>{{total}} </h1>
+    </div> -->
+
+    <div class="cart-pret">
+        <div class="header">
+            <div class="produs">Products</div>
+            <div class="price">Price</div>
+            <div class="quantity">Quantity</div>
+            <div class="delete">Delete</div>
+        </div>
+
+        {% for produs in produse_cart %}
+        <div class="products" id=produscos{{produs.id}}>
+            <div class="produs">
+                <img src="{{produs.cart.image.url}}" alt="">
+                <p>{{produs.cart.title}}</p>
+            </div>
+            <div class="price">
+                <p>{{produs.cart.price}}</p>
+            </div>
+            <div class="quantity">
+                <p>{{produs.quantity}}</p>
+            </div>
+            <div class="delete">
+                <button onclick="deletecart({{produs.id}})">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+        <h3>Total {{total}} Ron</h3>
     </div>
-    
+
 
         <div class="submit">
             <button type="submit" name="post" class="comanda">Comanda</button>
@@ -36,5 +67,31 @@
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 </body>
+
+<script> 
+    function deletecart(id) {
+        console.log(id);
+        const produs = document.querySelector('#produscos'+id)
+        $.ajax({
+            type: 'POST',
+            url: '{% url "store:delete_cart" %}',
+            data: {
+                produsid: id,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'delete',
+            },
+            success: function(json) {
+                if(json['delete'] === 'delete') {
+                    console.log('HAIDEEEE pe delete');
+                    produs.style.display = 'none';
+
+                }
+            },
+            error: function (xhr, errmsg, err) {
+
+            }
+        });
+    }
+</script>
 
 {% endblock %}

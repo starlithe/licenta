@@ -63,5 +63,14 @@ def add_cart(request):
 
         return JsonResponse({"succes": "succes"})
 
+def delete_cart(request):
+    if request.method == "POST":
+        if request.POST.get('action') == "delete":
+            id = int(request.POST.get("produsid"))
+            cart = get_object_or_404(Cart, id=id)
+            cart.delete()
+
+        return JsonResponse({"delete": "delete"})
+
 
 
