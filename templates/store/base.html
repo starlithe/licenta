@@ -107,11 +107,13 @@
                 </div>
             </div>
             </li>
+            {% if user.is_authenticated %}
             <li class="cart">
                 <button class="dropbutton" onclick=location.href="{%url 'store:cart'%}">
                     <ion-icon name="basket"></ion-icon>Cart<span></span>
                 </button>
             </li>
+            {% endif %}
         </div>
             
             <div class="wrap">
