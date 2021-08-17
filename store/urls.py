@@ -2,8 +2,8 @@ from django.urls import path, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from . import views
-
+from . import views 
+from appointment.views import view_unchecked_appointment
 app_name = 'store'
 
 urlpatterns = [
@@ -19,6 +19,6 @@ urlpatterns = [
     path('delete-cart/', views.delete_cart, name='delete_cart'),
     path('account/', include('accounts.urls', namespace='accounts')),
     path('account/', include ('django.contrib.auth.urls')),
-    path('calendar/', views.calendar, name='calendar'),
+    path('programari/', view_unchecked_appointment, name='calendar'),
     path('test/', views.test, name='test'),
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

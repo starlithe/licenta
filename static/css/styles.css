@@ -720,3 +720,31 @@ height: 25px;
   
 }
 
+.accepta{
+  padding: 0.25rem;
+  text-decoration: none;
+  background-color: greenyellow;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  order: 1;
+  color: black;
+
+}
+
+.nuaccepta{
+  padding: 0.25rem;
+  text-decoration: none;
+  background-color: red;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  order: 2;
+  color: black;
+
+}
+
+
+.acceptare{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  bottom: 0;
+}

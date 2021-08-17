@@ -52,7 +52,7 @@
             <button type="submit" name="post" class="programeaza-te">Programeaza-te</button>
         </div>
 {%else%}
-
+<a class="dropdown-item" href="{% url "accounts:profile" %}">Programari existente</a>
 <h1 class="error">Pentru a va programa trebuie sa fiti logat!</h1>
 {%endif%}
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+<h1>Programari</h1>
+<div class="container">
+    {%for produs in checked_app %}
+    <div class="image">
+            <h3>{{produs.name}}</h3>
+            <h3>{{produs.phone_number}}</h3>
+            <h3>{{produs.day}}</h3>
+            <h3>{{produs.appointment}}</h3>
+            <h3>{{produs.frizer}}</h3>
+            <h3>{{produs.pachet}}</h3>
+            <input type="hidden" value="20" />
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

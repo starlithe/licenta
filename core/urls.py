@@ -10,6 +10,7 @@ urlpatterns = [
     path('', include('store.urls', namespace='store')),
     path('account/', include('accounts.urls', namespace='accounts')),
     path('account/', include ('django.contrib.auth.urls')),
+    path('appointment/', include('appointment.urls', namespace='appointment')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

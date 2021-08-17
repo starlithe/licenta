@@ -90,10 +90,4 @@ def test(request):
     return render(request, 'store/test.html', {})
 
 
-def calendar(request):
- produse = Produs.objects.filter(categorie='Masini tuns')
- produse1 = Produs.objects.filter(categorie='Masini contur')
- produse2 = Produs.objects.filter(categorie='Shavere')
- produse3 = Produs.objects.filter(categorie='Foarfece')
- produse4 = Produs.objects.filter(categorie='Accesorii')
- return render(request, 'store/calendar.html', {'produse': produse, 'produse1': produse1, 'produse2': produse2, 'produse3': produse3, 'produse4': produse4})
+
