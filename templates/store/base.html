@@ -75,10 +75,10 @@
             <div class="dropdown">
                 <button ><img  class="userphoto" src="{% static 'images/userphoto.png' %}" class="dropbutton" onclick=location.href="{%url 'accounts:profile'%}"></button>
                 <div class="dropdown-content">
-                    <a class="dropdown-item" href="{% url "accounts:profile" %}">Dashboard</a>
-                    <a class="dropdown-item" href="{% url "accounts:edit" %}">Edit details</a> 
-                    <a class="dropdown-item" href="{% url "password_change" %}">Change Password</a>
-                    <a href="{%url 'logout'%}">Log out</a>
+                    <a class="dropdown-item" href="{% url "accounts:profile" %}">Panou de comanda</a>
+                    <a class="dropdown-item" href="{% url "accounts:edit" %}">Editare detalii</a> 
+                    <a class="dropdown-item" href="{% url "password_change" %}">Schimbare parola</a>
+                    <a href="{%url 'logout'%}">Iesire cont</a>
                 </div>
             </div>
 
@@ -86,12 +86,12 @@
             </li>
             {% else %}
             <li>
-            <button class="dropbutton" onclick=location.href="{%url 'accounts:register'%}">Register</button>
+            <button class="dropbutton" onclick=location.href="{%url 'accounts:register'%}">Inregistrare</button>
         {% comment %} <a class="p-2 text-dark" href="{% url "accounts:register" %}">Register</a> {% endcomment %}
             </li>
             <li>
         {% comment %} <a class="p-2 text-dark" href="{% url "login" %}">Login</a> {% endcomment %}
-        <button class="dropbutton" onclick=location.href="{%url 'login'%}">Log in</button>
+        <button class="dropbutton" onclick=location.href="{%url 'login'%}">Autentificare</button>
             
             </li>
         {% endif %}
@@ -99,25 +99,27 @@
             <li>
             <div class="dropdown">
                 <button class="dropbutton" onclick=location.href="{%url 'store:all_products'%}">
-                Home
+                Acasa
                 </button>
                 <div class="dropdown-content">
                     <a href="{%url 'store:produse'%}">Produse</a>
-                    <a href="./programari.html">Programare Tuns</a>
+                    <a href="{%url 'store:programare'%}">Programare Tuns</a>
                 </div>
             </div>
             </li>
+            {%if request.user.is_authenticated%}
             <li class="cart">
                 <button class="dropbutton" onclick=location.href="{%url 'store:cart'%}">
-                    <ion-icon name="basket"></ion-icon>Cart<span></span>
+                    <ion-icon name="basket"></ion-icon>Cos<span></span>
                 </button>
             </li>
+            {%endif%}
         </div>
             
             <div class="wrap">
                 <div class="search">
                     <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                    <button type="submit" class="searchButton">
+                    <button type="submit" class="searchButton" href="{%url 'store:produsecautate'%}">
                     <span class="material-icons">
                     search
                     </span>

@@ -1,0 +1,58 @@
+{% extends "./base.html" %} {% load static %} {% block content %}
+{% if request.user.is_authenticated %}
+<div class="programare">
+    <div class="col-6">
+        <label for="select">Ora</label>
+            <select id="select">
+                <option value="1">10:00</option>
+                <option value="2">11:00</option>
+                <option value="3">12:00</option>
+                <option value="4">13:00</option>
+                <option value="4">14:00</option>
+                <option value="4">16:00</option>
+                <option value="4">17:00</option>
+                <option value="4">18:00</option>
+                <option value="4">19:00</option>
+                <option value="4">20:00</option>
+            </select>
+    </div>
+    <div class="col-6">
+        <label for="select">Ziua</label>
+            <select id="select">
+                <option value="1">Luni</option>
+                <option value="2">Marti</option>
+                <option value="3">Miercuri</option>
+                <option value="4">Joi</option>
+                <option value="4">Vineri</option>
+                <option value="4">Sambata</option>
+            </select>
+    </div>
+    <div class="col-6">
+        <label for="select">Frizerul</label>
+            <select id="select">
+                <option value="1">Claudiu</option>
+                <option value="2">Ivanciu</option>
+                <option value="3">Gheorghe</option>
+            </select>
+    </div>
+    <div class="col-6">
+        <label for="select">Pachet</label>
+            <select id="select">
+                <option value="1">Tuns</option>
+                <option value="2">Tuns+barba</option>
+                <option value="3">Tuns+barba+aranjat</option>
+                <option value="2">Barba</option>
+                <option value="2">Vopsit barba</option>
+                <option value="2">Pensat</option>
+            </select>
+    </div>
+</div>
+
+<div class="submit">
+            <button type="submit" name="post" class="programeaza-te">Programeaza-te</button>
+        </div>
+{%else%}
+
+<h1 class="error">Pentru a va programa trebuie sa fiti logat!</h1>
+{%endif%}
+{% endblock %}

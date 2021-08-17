@@ -25,13 +25,13 @@
         {% endfor %}
         <h1>{{total}} </h1>
     </div> -->
-
+{% if request.user.is_authenticated %}
     <div class="cart-pret">
         <div class="header">
-            <div class="produs">Products</div>
-            <div class="price">Price</div>
-            <div class="quantity">Quantity</div>
-            <div class="delete">Delete</div>
+            <div class="produs">Produse</div>
+            <div class="price">Pret</div>
+            <div class="quantity">Cantitate</div>
+            <div class="delete">Stergere</div>
         </div>
 
         {% for produs in produse_cart %}
@@ -63,7 +63,6 @@
     </form>
     
     
-    <script src="produs.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 </body>
@@ -93,5 +92,10 @@
         });
     }
 </script>
+
+{%else%}
+<h1 class="error"> Trebuie sa fiti autentificat pentru a vedea cosul. </h1>
+
+{%endif%}
 
 {% endblock %}

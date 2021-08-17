@@ -1,0 +1,56 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+{{ produs.name }}
+{% endblock %}
+<link rel="stylesheet" href="/static/css/styles.css" />
+{% block content %}
+
+
+{% comment %} <body>
+        <div class="containerproduct">
+            <div>
+                <div><img class="pozaprodus" src="{{produs.image.url}}" alt="WahlMagicClip"> </div>
+            </div>
+            <div>
+                <h1>Wahl Magic Clip </h1> <br>
+                            <div class="descriere"> <a>{{produs.description}}</a><br>
+                            </div>
+                <a class="pretprodus">Pret  {{produs.price}}  lei</a>
+                <div class="col-6">
+                                <label for="select">Qty</label>
+                                <select id="select">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+
+                            </div>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+        </div>
+{% endcomment %}
+
+<div class="container">
+    <main class="pt-5">
+        <div class="row g-3">
+            <div class="col-md-5 col-lg-5 order-md-first bg-light">
+                <img class="img-fluid mx-auto d-block" width="200px" alt="Responsive image" src="{{ frizer.image.url }}">
+            </div>
+            <div class="col-md-7 col-lg-7 ps-md-3 ps-lg-5">
+                <h1 class="mb-0 h4">{{ frizer.title }}</h1>
+                <div class="descriere">
+                    <p id="desriereprodus">{{ frizer.description|linebreaksbr }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+{% endblock %}
+
+

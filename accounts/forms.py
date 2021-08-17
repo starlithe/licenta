@@ -114,7 +114,7 @@ class UserEditForm(forms.ModelForm):
 
     email = forms.EmailField(
         max_length=200, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Old Password', 'id': 'form-email'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'New email', 'id': 'form-email'}))
 
     class Meta:
         model = User

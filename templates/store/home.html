@@ -6,11 +6,17 @@
             <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
             <h3>{{produs.title}}</h3>
             <h3>{{produs.price}} lei</h3>
-            <a class="add-cart cart4"  onclick="addcart({{produs.id}})" href="#">Add Cart</a>
+            {% if request.user.is_authenticated %}
+            {% if produs.in_stock %}
+            <a class="add-cart cart4"  onclick="addcart({{produs.id}})">Adauga in cos</a>
+            {% endif %}
+            {% endif %}
             <input type="hidden" value="20" />
         </div>
   {% endfor %}
 </div>
+
+
 
 <h1>Frizerii nostri</h1>
 <div class="container2">
@@ -18,7 +24,7 @@
   <div class="claudiu">
     <a><img src="{{frizer.image.url }}" alt="" /></a>
     <h3>{{frizer.title}}</h3>
-    <a class="add-cart frizer1" href="#">Viziteaza frizerul</a>
+    <a class="add-cart frizer1" href="{%url 'store:frizer_detail' frizer.slug%}">Viziteaza frizerul</a>
     <input type="hidden" value="20" />
   </div>
   {% endfor %}
@@ -30,6 +36,7 @@
   <div class="pachete">
     <img src="{{pachet.image.url}}" />
     <h3>{{pachet.title}}</h3>
+    {{pachet.description}}
   </div>
   {%endfor%}
 </div>

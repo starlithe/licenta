@@ -53,10 +53,14 @@ class Product(models.Model):
 class Frizer(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/')
+    slug = models.SlugField(max_length=255)
     description = models.TextField(blank=True)
 
     class Meta:
         verbose_name_plural = 'Frizeri'
+
+    def get_absolute_url(self):
+        return reverse('store:frizeri_detail', args=[self.slug])
 
     def __str__(self):
         return self.title
@@ -96,6 +100,8 @@ class Produs(models.Model):
         produs1 = "Masini tuns", "masinituns"
         produs2 = "Masini contur", "masinicontur"
         produs3 = "Shavere", "shavere"
+        produs4 = "Foarfece", "foarfece"
+        produs5 = "Accesorii", "accesorii"
 
     categorie = models.CharField(max_length=50, choices=categorie.choices)
 

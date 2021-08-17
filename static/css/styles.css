@@ -194,7 +194,7 @@ li a {
 
 /* Dropdown Button */
 .dropbutton {
-  background-color: #4caf50;
+  
   color: black;
   font-size: 16px;
   border: none;
@@ -318,6 +318,7 @@ li a {
 
 .products p{
   max-width: 150px;
+  margin-left: 0px;
 
 }
 
@@ -511,6 +512,7 @@ li a {
 }
 
 footer{
+  margin-top: 18%;
   background-color: darkgray;
   text-decoration: none;
   bottom: 0;
@@ -686,3 +688,35 @@ height: 25px;
   margin-left: 2rem;
   margin-top: 2rem;
 }
+
+
+/* Programare */
+
+.programare{
+  display:list-item;
+  margin-top: 100px;
+  margin-left: 45%;
+}
+.programeaza-te{
+  background-color: black;
+    border: 1px solid black;
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 45%;
+    transition: 250ms all;
+}
+
+
+.error{
+  position: relative;
+  align-items: center;
+  
+}
+
