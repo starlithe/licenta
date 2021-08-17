@@ -14,7 +14,7 @@ class Appointment(models.Model):
         
     name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=13)
-    slug = models.SlugField(unique=True, blank=True)
+    slug = models.SlugField(blank=True)
     
     created = models.DateTimeField(auto_now_add=True)
     
