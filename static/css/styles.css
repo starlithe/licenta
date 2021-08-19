@@ -646,7 +646,7 @@ height: 25px;
     margin-top: 5px;
     transition: 250ms all;
     align-items: center;
-    margin-left: 40%;
+    margin-left: 35%;
 }
 
 
@@ -758,14 +758,16 @@ height: 25px;
   padding: 1rem;
 }
 
-tr{
 
-  border: 1px solid red;
-}
-th{
-  margin: 0 1rem;
-
-}
 table, th, td {
   border: 1px solid black;
+  padding: 2rem;
+}
+.unchecked{
+  margin-left: 2rem;
+}
+
+.link{
+  text-decoration: none;
+  font-weight: 900
 }

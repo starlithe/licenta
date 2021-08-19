@@ -45,10 +45,10 @@
 
                             <form class="account-form p-4 rounded col-lg-10 mx-auto" action="." method="post">
                                 {% csrf_token %}
-                                <p class="h4 mb-2 font-weight-bold">Create an account</p>
+                                <p class="h4 mb-2 font-weight-bold">Inregistrare cont nou</p>
 
                                 {% if form.errors %}
-                                <p>Please correct the following errors:</p>
+                                <p>Corectati greselile!</p>
                                 {% for field in form %}
                                 {% if field.errors %}
                                 <div class="alert alert-primary" role="alert">
@@ -59,16 +59,16 @@
                                 {% endif %}
 
                                 <label class="small font-weight-bold">{{ form.username.label }}<span class="text-muted">
-                                        (Required)</span></label>
+                                        (Necesar)</span></label>
                                 {{ form.username }}
                                 <label class="small font-weight-bold">{{ form.email.label}}<span class="text-muted">
-                                        (Required)</span></label>
+                                        (Necesar)</span></label>
                                 {{ form.email }}
                                 <label class="small font-weight-bold">{{ form.password.label}}<span class="text-muted">
-                                        (Required)</span></label>
+                                        (Necesar)</span></label>
                                 {{ form.password }}
                                 <small class="form-text text-muted mb-4">
-                                    At least 8 characters and 1 digit
+                                    Cel putin 8 caractere si un numar.
                                 </small>
                                 {{ form.password2 }}
                                 
@@ -76,7 +76,7 @@
                                 
                             <div>
                                 <button class="z"
-                                    type="submit">Register</button>
+                                    type="submit">Inregistrare</button>
                             </div>
 
                                 <hr class="mb-3">

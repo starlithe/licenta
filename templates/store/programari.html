@@ -8,14 +8,17 @@
                     <th>Numarul de telefon</th>
                     <th>Ziua</th>
                     <th>Ora</th>
+                    <th>Detalii</th>
                 </tr>
-                <tr>
                 {%for produs in unchecked_app %}
+                <tr>
                     <td>{{produs.name}}</td>
                     <td>{{produs.phone_number}}</td>
                     <td>{{produs.day}}</td>
                     <td>{{produs.appointment}}</td>
+                    <td><a class="link" href="{%url 'appointment:view_detail_appointment' produs.slug%}"> Detalii</td>
                 </tr>
+                {% endfor %}
             </table>
 
             {% comment %} <h3>{{produs.name}}</h3>
@@ -27,7 +30,7 @@
             <h3>{{produs.status}}</h3>
             <input type="hidden" value="20" /> {% endcomment %}
         </div>
-    {% endfor %}
+    
 </div>
 
 {% endblock %}

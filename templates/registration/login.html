@@ -44,7 +44,7 @@
 
                                 {% if form.errors %}
                                 <div class="alert alert-primary" role="alert">
-                                    Error: Username or Password not correct!
+                                    Eroare: Nume de utilizator sau parola introduse gresit!
                                 </div>
                                 {% endif %}
 
@@ -55,8 +55,11 @@
                                 {{ form.password}}
 
                                 <button class="z" type="submit"
-                                    value="Log-in">Sign
-                                    in</button>
+                                    value="Log-in">Autentificare</button>
+
+                                <p class="small text-center pt-4">
+                                    <a href="{% url "accounts:pwdreset" %}">Resetare parola</a>
+                                </p>        
 
                                 <p class="small font-weight-bold text-center pb-3">
                                     {% comment %} <a href="{% url "accounts:register" %}">New to Blog? Create an account</a> {% endcomment %}

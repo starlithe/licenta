@@ -24,19 +24,19 @@
 
                     {% if user_form.is_valid %}
                     <div class="alert alert-primary" role="alert">
-                        Details successfully updated!
+                        Detaliile au fost modificate cu succes.
                     </div>
                     <p class="small text-center pt-0">
-                        <a href="{% url "accounts:profile" %}">Back to Dashboard</a>
+                        <a href="{% url "accounts:profile" %}">Inapoi la pagina principala</a>
                     </p>
                     {%else%}
-                    <p class=" h4 mb-4 font-weight-bold">Change your details</p>
-                    <p>You can edit your account using the following form:</p>
+                    <p class=" h4 mb-4 font-weight-bold">Modifica detaliile</p>
+                    <p>Va puteti modifica detaliile contului folosind form-urile urmatoare:</p>
                     {% endif %}
 
                     {% if user_form.errors %}
                     <div class="alert alert-primary" role="alert">
-                        Error: Please try again!
+                        Eroare: Incercati din nou!
                     </div>
                     {% endif %}
 
@@ -48,13 +48,13 @@
                     <label class="small font-weight-bold">{{ user_form.email.label}}</label>
                     {{ user_form.email }}
                     <button class="d" type="submit"
-                        value="Save changes">Save Changes</button>
+                        value="Save changes">Salvati modificarile</button>
                     <hr class="mb-3">
-                    <p class=" h5 mb-2 pt-4 font-weight-bold">Delete Account</p>
-                    <p class="small">If you would like to delete your account press the button below:</p>
+                    <p class=" h5 mb-2 pt-4 font-weight-bold">Stergeti contul</p>
+                    <p class="small">Daca va doriti sa stergeti contul, apasati butonul urmator:</p>
                     <a href="{% url "accounts:deleteuser" %}"
                         class="btn btn-danger btn-block py-2 mb-4 mt-5 font-weight-bold" role="button"
-                        aria-pressed="true">Delete Account</a>
+                        aria-pressed="true">Sterge contul</a>
                 </form>
 
             </div>

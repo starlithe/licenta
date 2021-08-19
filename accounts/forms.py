@@ -10,23 +10,23 @@ from django.core.exceptions import ValidationError
 class PwdChangeForm(PasswordChangeForm):
 
     old_password = forms.CharField(
-        label='Old Password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Old Password', 'id': 'form-oldpass'}))
+        label='Parola veche', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Parola veche', 'id': 'form-oldpass'}))
     new_password1 = forms.CharField(
-        label='New password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
+        label='Parola noua', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Parola noua', 'id': 'form-newpass'}))
     new_password2 = forms.CharField(
-        label='Repeat password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
+        label='Confirmare parola noua', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Confirmare parola noua', 'id': 'form-new-pass2'}))
 
 
 class PwdResetConfirmForm(SetPasswordForm):
     new_password1 = forms.CharField(
         label='New password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Parola noua', 'id': 'form-newpass'}))
     new_password2 = forms.CharField(
         label='Repeat password', widget=forms.PasswordInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass2'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Parola noua', 'id': 'form-newpass2'}))
 
 
 
@@ -46,7 +46,7 @@ class PwdResetForm(PasswordResetForm):
 class UserLoginForm(AuthenticationForm):
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'login-username'}))
+        attrs={'class': 'form-control mb-3', 'placeholder': 'Nume de utilizator', 'id': 'login-username'}))
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
@@ -93,28 +93,28 @@ class RegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update(
-            {'class': 'form-control mb-3', 'placeholder': 'Username'})
+            {'class': 'form-control mb-3', 'placeholder': 'Nume de utilizator'})
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Password'})
+            {'class': 'form-control', 'placeholder': 'Parola noua'})
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Repeat Password'})
+            {'class': 'form-control', 'placeholder': 'Repetare parola noua'})
 
 
 class UserEditForm(forms.ModelForm):
 
     first_name = forms.CharField(
         label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'form-firstname'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Nume', 'id': 'form-firstname'}))
 
     last_name = forms.CharField(
         label='Lastname', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Lastname', 'id': 'form-lastname'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Prenume', 'id': 'form-lastname'}))
 
     email = forms.EmailField(
         max_length=200, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'New email', 'id': 'form-email'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Mail nou', 'id': 'form-email'}))
 
     class Meta:
         model = User
@@ -124,7 +124,7 @@ class UserEditForm(forms.ModelForm):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError(
-                'Please use another Email, that is already taken')
+                'Folositi un alt email, acesta este deja in folosinta')
         return email
 
     def __init__(self, *args, **kwargs):

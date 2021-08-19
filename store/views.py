@@ -1,3 +1,4 @@
+from core.forms import SearchFormPost
 from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 from .models import Category, Product, Frizer, Pachet, Produs, Cart
@@ -89,5 +90,7 @@ def test(request):
 
     return render(request, 'store/test.html', {})
 
+def search_global(request):
 
+    form = SearchFormPost()
 

@@ -1,7 +1,7 @@
 {% autoescape off %}
-Hi {{ user.username }},
+Buna ziua {{ user.username }},
 
-Your account has successfully created. Please click below link to activate your account.
+Contul dumneavoastra a fost creat cu succes. Accesati linkul de mai jos pentru activarea contului.
 
 http://{{ domain }}{% url 'accounts:activate' uidb64=uid token=token %}
 {% endautoescape %}
