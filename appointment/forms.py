@@ -27,3 +27,10 @@ class AppointmentForm(forms.ModelForm):
 
         # self.fields['pachet'].widget.attrs.update(
         #     {'class': 'form-select'})
+        
+        
+class AppointmentCheckForm(forms.ModelForm):
+    
+    class Meta:
+        model = Appointment
+        fields = ['checked', 'status']

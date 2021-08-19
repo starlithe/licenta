@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
-from .forms import AppointmentForm
+from .forms import AppointmentForm, AppointmentCheckForm
 from .models import Appointment
 
 def create_appointment(request):
@@ -26,4 +26,11 @@ def view_checked_appointment(request):
     
 def view_detail_appointment(request, slug):
     appointment_detail = get_object_or_404(Appointment, slug=slug)
-    return render(request, {'appointment_detail':appointment_detail})
+    
+    form = AppointmentCheckForm(instance=appointment_detail)
+    if request.method == 'POST':
+        form = AppointmentCheckForm(request.POST, instance=appointment_detail)
+        if form.is_valid():
+            form.save()
+            
+    return render(request, 'store/detalii programare.html', {'appointment_detail':appointment_detail, 'form':form})
