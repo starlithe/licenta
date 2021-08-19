@@ -1,0 +1,82 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title %}
+{{ appointment_detail.name }}
+{% endblock %}
+<link rel="stylesheet" href="/static/css/styles.css" />
+{% block content %}
+
+
+{% comment %} <body>
+        <div class="containerproduct">
+            <div>
+                <div><img class="pozaprodus" src="{{produs.image.url}}" alt="WahlMagicClip"> </div>
+            </div>
+            <div>
+                <h1>Wahl Magic Clip </h1> <br>
+                            <div class="descriere"> <a>{{produs.description}}</a><br>
+                            </div>
+                <a class="pretprodus">Pret  {{produs.price}}  lei</a>
+                <div class="col-6">
+                                <label for="select">Qty</label>
+                                <select id="select">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+
+                            </div>
+                <button class="add-cart">Add to Cart</button>
+            </div>
+
+        </div>
+{% endcomment %}
+
+
+                            
+                            
+                            
+
+
+
+<div class="appointment">
+   
+
+        <table>
+            <tr>
+                <td>Nume frizer</td>
+                <td>{{appointment_detail.frizer}}</td>
+            </tr>
+            <tr>
+                <td>Ziua programarii</td>
+                <td>{{appointment_detail.day}}</td>
+            </tr>
+            <tr>
+                <td>Ora programarii</td>
+                <td>{{appointment_detail.appointment}}</td>
+            </tr>
+            <tr>
+                <td>Pachetul ales</td>
+                <td>{{appointment_detail.pachet}}</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td>{{appointment_detail.status}}</td>
+            </tr>
+</table>
+<form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                {{ form.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+</div>
+
+
+
+
+{% endblock %}

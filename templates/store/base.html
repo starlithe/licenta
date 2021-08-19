@@ -104,6 +104,10 @@
                 <div class="dropdown-content">
                     <a href="{%url 'store:produse'%}">Produse</a>
                     <a href="{%url 'store:programare'%}">Programare Tuns</a>
+                    <a href="{%url 'appointment:view_checked_appointment'%}">Programari existente</a>
+                    {% if request.user.is_superuser %}
+                    <a href="{%url 'appointment:view_unchecked_appointment'%}">Programari creeate</a>
+                    {%endif%}
                 </div>
             </div>
             </li>

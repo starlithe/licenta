@@ -748,3 +748,24 @@ height: 25px;
   grid-template-columns:1fr 1fr;
   bottom: 0;
 }
+
+.appointment{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2rem;
+  display: grid;
+  padding: 1rem;
+}
+
+tr{
+
+  border: 1px solid red;
+}
+th{
+  margin: 0 1rem;
+
+}
+table, th, td {
+  border: 1px solid black;
+}

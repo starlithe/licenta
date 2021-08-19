@@ -1,19 +1,31 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
 <h1>Programari</h1>
-<div class="container">
-    {%for produs in unchecked_app %}
-    <div class="image">
-            <h3>{{produs.name}}</h3>
+<div>
+        <div class="unchecked">
+            <table>
+                <tr>
+                    <th>Numele clientului</th>
+                    <th>Numarul de telefon</th>
+                    <th>Ziua</th>
+                    <th>Ora</th>
+                </tr>
+                <tr>
+                {%for produs in unchecked_app %}
+                    <td>{{produs.name}}</td>
+                    <td>{{produs.phone_number}}</td>
+                    <td>{{produs.day}}</td>
+                    <td>{{produs.appointment}}</td>
+                </tr>
+            </table>
+
+            {% comment %} <h3>{{produs.name}}</h3>
             <h3>{{produs.phone_number}}</h3>
             <h3>{{produs.day}}</h3>
             <h3>{{produs.appointment}}</h3>
             <h3>{{produs.frizer}}</h3>
             <h3>{{produs.pachet}}</h3>
-            <div class="acceptare">
-                <a class="accepta ">Accepta</a>
-                <a class="nuaccepta ">Refuza</a>
-            </div>
-            <input type="hidden" value="20" />
+            <h3>{{produs.status}}</h3>
+            <input type="hidden" value="20" /> {% endcomment %}
         </div>
     {% endfor %}
 </div>

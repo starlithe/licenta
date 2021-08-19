@@ -62,9 +62,9 @@ class Appointment(models.Model):
     checked = models.BooleanField(default=False)
     
     class Status(models.TextChoices):
-        STAT1 = 'stat1', 'In asteptare'
-        STAT2 = 'stat2', 'Acceptat'
-        STAT3 = 'stat3', 'Refuzat'
+        STAT1 = 'In asteptare', 'In asteptare'
+        STAT2 = 'Acceptat', 'Acceptat'
+        STAT3 = 'Refuzat', 'Refuzat'
 
     
     status = models.CharField(max_length=40, choices=Status.choices, default=Status.STAT1)
