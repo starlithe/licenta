@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.template.defaultfilters import slugify
+import uuid
 
 class Appointment(models.Model):
     
@@ -78,7 +79,7 @@ class Appointment(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.created)
+            self.slug = uuid.uuid4()
         return super().save(*args, **kwargs)
     
     def __str__(self):
