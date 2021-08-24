@@ -15,51 +15,48 @@ class Appointment(models.Model):
         
     name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=13)
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField(max_length=200, null=False, unique=True, blank=True)
     
-    created = models.DateTimeField(auto_now_add=True)
+    # created = models.DateTimeField(auto_now_add=True)
     
-    DAY = [
-        ('Luni', 'Luni'),
-        ('Marti', 'Marti '),
-        ('Miercuri', 'Miercuri'),
-        ('Joi', 'Joi'),
-        ('Vineri', 'Vineri'),
-        ('Sambata', 'Sambata'),
-        ('Duminica', 'Duminica'),
-    ]
+    class Day(models.TextChoices):
+        ZI1 = 'Luni', 'Luni'
+        ZI2 = 'Marti', 'Marti'
+        ZI3 = 'Miercuri', 'Miercuri'
+        ZI4 = 'Joi', 'Joi'
+        ZI5 = 'Vineri', 'Vineri'
+        ZI6 = 'Sambata', 'Sambata'
+        ZI7 = 'Duminica', 'Duminica'
     
-    day = models.CharField(max_length=100, choices=DAY, default=None)
     
-    APPOINTMENT = [
-        ('12:00-13:00', '12:00-13:00'),
-        ('13:00-14:00', '13:00-14:00'),
-        ('14:00-15:00', '14:00-15:00'),
-        ('15:00-16:00', '15:00-16:00'),
-        ('16:00-17:00', '16:00-17:00'),
-        ('17:00-18:00', '17:00-18:00'),
-    ]
+    day = models.CharField(max_length=100, choices=Day.choices, default=Day.ZI1)
     
-    appointment = models.CharField(max_length=100, choices=APPOINTMENT, default=None)
+    class Appointment(models.TextChoices):
+        ORA1 = '12_13', '12:00-13:00'
+        ORA2 = '13_14', '13:00-14:00'
+        ORA3 = '14_15', '14:00-15:00'
+        ORA4 = '15_16', '15:00-16:00'
+        ORA5 = '16_17', '16:00-17:00'
+        ORA6 = '17_18', '17:00-18:00'
     
-    FRIZER = [
-        ('Claudiu', 'Claudiu'),
-        ('Ivanciu', 'Ivanciu'),
-        ('Gheorghe', 'Gheorghe'),
-    ]
+    appointment = models.CharField(max_length=100, choices=Appointment.choices, default=Appointment.ORA1)
     
-    frizer = models.CharField(max_length=100, choices=FRIZER, default=None)
+    class Frizer(models.TextChoices):
+        STAT1 = 'Claudiu', 'Claudiu'
+        STAT2 = 'Ivanciu', 'Ivanciu'
+        STAT3 = 'Gheorghe', 'Gheorghe'
     
-    PACHET = [
-        ('Tuns', 'Tuns'),
-        ('Tuns + Barba', 'Tuns + Barba'),
-        ('Tuns + Barba + Aranjat', 'Tuns + Barba + Aranjat'),
-        ('Barba', 'Barba'),
-        ('Vopsit barba', 'Vopsit barba'),
-        ('Pensat', 'Pensat'),
-    ]
+    frizer = models.CharField(max_length=100, choices=Frizer.choices, default=Frizer.STAT1)
     
-    pachet = models.CharField(max_length=100, choices=PACHET, default=None)
+    class Pachet(models.TextChoices):
+        PC1 = 'tuns', 'Tuns'
+        PC2 = 'tuns_barba', 'Tuns + Barba'
+        PC3 = 'tuns_barba_aranjat', 'Tuns + Barba + Aranjat'
+        PC4 = 'babra', 'Barba'
+        PC5 = 'vopsit_barba', 'Vopsit barba'
+        PC6 = 'pensat', 'Pensat'
+    
+    pachet = models.CharField(max_length=100, choices=Pachet.choices, default=Pachet.PC1)
     checked = models.BooleanField(default=False)
     
     class Status(models.TextChoices):

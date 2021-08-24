@@ -49,24 +49,19 @@
 </div>-->
 
 
-
+{% if error %}
+    <h2>{{error}}</h2>
+{% endif %}
 
 <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="programare">
-                {{ form.as_p}}
-                </div>
-            <button type="submit" class="programeaza-te">Submit</button>
-        </form>
+    {% csrf_token %}
+    <div class="programare">
+        {{ form.as_p}}
+    </div>
+    <button type="submit" class="programeaza-te">Submit</button>
+</form>
 
 
- 
 
-{% comment %} <div class="submit">
-            <button type="submit" name="post" class="programeaza-te">Programeaza-te</button>
-        </div>
-{%else%}
-<a class="dropdown-item" href="{% url "accounts:profile" %}">Programari existente</a>
-<h1 class="error">Pentru a va programa trebuie sa fiti logat!</h1>{% endcomment %}
 {%endif%}
 {% endblock %}

@@ -5,15 +5,18 @@ from .models import Appointment
 
 
 def create_appointment(request):
+    error = ''
     form = AppointmentForm()
     if request.method == 'POST':
-        form = AppointmentForm()
+        form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
+        else:
+            error = "Nu merge dintr-un anume motiv"
         
     template_name = 'store/programare.html'
         
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'form': form, 'error': error})
 
 
 @ staff_member_required
