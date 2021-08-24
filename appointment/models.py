@@ -32,12 +32,12 @@ class Appointment(models.Model):
     day = models.CharField(max_length=100, choices=Day.choices, default=Day.ZI1)
     
     class Appointment(models.TextChoices):
-        ORA1 = '12_13', '12:00-13:00'
-        ORA2 = '13_14', '13:00-14:00'
-        ORA3 = '14_15', '14:00-15:00'
-        ORA4 = '15_16', '15:00-16:00'
-        ORA5 = '16_17', '16:00-17:00'
-        ORA6 = '17_18', '17:00-18:00'
+        ORA1 = '12:00-13:00', '12:00-13:00'
+        ORA2 = '13:00-14:00', '13:00-14:00'
+        ORA3 = '14:00-15:00', '14:00-15:00'
+        ORA4 = '15:00-16:00', '15:00-16:00'
+        ORA5 = '16:00-17:00', '16:00-17:00'
+        ORA6 = '17:00-18:00', '17:00-18:00'
     
     appointment = models.CharField(max_length=100, choices=Appointment.choices, default=Appointment.ORA1)
     
