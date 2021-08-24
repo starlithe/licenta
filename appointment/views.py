@@ -40,5 +40,6 @@ def view_detail_appointment(request, slug):
         form = AppointmentCheckForm(request.POST, instance=appointment_detail)
         if form.is_valid():
             form.save()
+            return redirect('appointment:view_unchecked_appointment')
 
     return render(request, 'store/detalii programare.html', {'appointment_detail': appointment_detail, 'form': form})
