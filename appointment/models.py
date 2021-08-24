@@ -26,7 +26,7 @@ class Appointment(models.Model):
         ZI4 = 'Joi', 'Joi'
         ZI5 = 'Vineri', 'Vineri'
         ZI6 = 'Sambata', 'Sambata'
-        ZI7 = 'Duminica', 'Duminica'
+
     
     
     day = models.CharField(max_length=100, choices=Day.choices, default=Day.ZI1)

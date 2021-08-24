@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import AppointmentForm, AppointmentCheckForm
 from .models import Appointment
@@ -11,8 +11,9 @@ def create_appointment(request):
         form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('appointment:view_checked_appointment')
         else:
-            error = "Nu merge dintr-un anume motiv"
+            error = "Programarea nu s-a putut realiza"
         
     template_name = 'store/programare.html'
         
