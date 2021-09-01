@@ -49,8 +49,27 @@ def frizer_detail(request, slug):
     return render(request, 'store/frizeri_detail.html',{"frizer":frizer})
 
 def search(request):
-    produsecautate = Produs.objects.all()
-    return render(request, 'store/search.html',{"produsecautate":produsecautate})
+    
+    form = SearchForm()
+    q = ''
+    results = []
+    query = Q()
+    error = ''
+
+    if 'q' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+
+            if q is not None:
+                query &= Q(title__icontains=q)
+
+            results = Produs.objects.filter(query)
+            
+            if not Produs.objects.filter(query).exists():
+                error = "Nu exista produs in magazin"
+
+    return render(request, 'store/search.html',{'form': form, 'q': q, 'results': results, 'error': error})
 
 def cart(request):
     produse_cart = Cart.objects.filter()
@@ -92,22 +111,4 @@ def test(request):
 
     return render(request, 'store/test.html', {})
 
-def search_global(request):
-
-    form = SearchForm()
-    q = ''
-    results = []
-    query = Q()
-
-    if 'q' in request.GET:
-        form = SearchForm(request.GET)
-        if form.is_valid():
-            q = form.cleaned_data['q']
-
-            if q is not None:
-                query &= (Q(user__username__icontains=q) | Q(title__icontains=q))
-
-            results = Produs.objects.filter(query)
-
-        return redirect(request, 'store/search.html', {'form': form, 'q': q, 'results': results})
 

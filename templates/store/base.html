@@ -111,6 +111,13 @@
                 </div>
             </div>
             </li>
+            
+            <li>
+                <div class="dropdown">
+                    <button class="dropbutton" onclick=location.href="{% url 'store:produsecautate' %}">Search</button>
+                </div>
+            </li>
+
             {%if request.user.is_authenticated%}
             <li class="cart">
                 <button class="dropbutton" onclick=location.href="{%url 'store:cart'%}">
@@ -120,16 +127,7 @@
             {%endif%}
         </div>
             
-            <div class="wrap">
-                <form class="search" autocomplete="off" method='get'>
-                    
-                    {% csrf_token %}
-                    {{form.q}}
-                    <button type="submit" class="searchButton">
-                    <span class="material-icons">search</span></button>
-                </form>
-            </div>
-            
+
         </ul>
         
     </nav>

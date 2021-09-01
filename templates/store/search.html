@@ -1,16 +1,41 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
 
-<h1>Produsele Cautate</h1>
+<h1>Cauta produs</h1>
+
 <div class="container">
-    {%for produs in produse%}
-        <div class="image">
-            <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
-            <h3>{{produs.title}}</h3>
-            <h3>{{produs.price}} lei</h3>
-            <a class="add-cart cart4" href="#">Add Cart</a>
-            <input type="hidden" value="20" />
+
+        <form class="search" autocomplete="off" method='get'>
+            
+            {% csrf_token %}
+            {{form.q}}
+            
+            <button type="submit" class="searchButton">
+            <span class="material-icons">search</span></button>
+        </form>
+        {% if q %}
+        <div class="container">
+            {% for produs in results %}
+
+            <div class="image">
+                <a href="{%url 'store:produs_detail' produs.slug%}"><img src="{{produs.image.url }}" alt=""/></a>
+                <h3>{{produs.title}}</h3>
+                <h3>{{produs.price}} lei</h3>
+                {% if request.user.is_authenticated %}
+                {%if produs.in_stock%}
+                <a class="add-cart cart4"  onclick="addcart({{produs.id}})" >Add Cart</a>
+                {% endif %}
+                {% endif %}
+                <input type="hidden" value="20" />
+            </div>
+
+            {% endfor%}
         </div>
-    {% endfor %}
+            {{ error }}
+
+        {% endif %}
+
+        
+
 </div>
 
 
