@@ -121,14 +121,13 @@
         </div>
             
             <div class="wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                    <button type="submit" class="searchButton" href="{%url 'store:produsecautate'%}">
-                    <span class="material-icons">
-                    search
-                    </span>
-                    </button>
-                </div>
+                <form class="search" autocomplete="off" method='get'>
+                    
+                    {% csrf_token %}
+                    {{form.q}}
+                    <button type="submit" class="searchButton">
+                    <span class="material-icons">search</span></button>
+                </form>
             </div>
             
         </ul>

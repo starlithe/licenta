@@ -1,8 +1,10 @@
 from core.forms import SearchFormPost
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import JsonResponse
 from .models import Category, Product, Frizer, Pachet, Produs, Cart
 
+from .forms import SearchForm
+from django.db.models import Q
 
 def categories(request):
     return {
@@ -92,5 +94,20 @@ def test(request):
 
 def search_global(request):
 
-    form = SearchFormPost()
+    form = SearchForm()
+    q = ''
+    results = []
+    query = Q()
+
+    if 'q' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+
+            if q is not None:
+                query &= (Q(user__username__icontains=q) | Q(title__icontains=q))
+
+            results = Produs.objects.filter(query)
+
+        return redirect(request, 'store/search.html', {'form': form, 'q': q, 'results': results})
 
