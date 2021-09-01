@@ -1,3 +1,5 @@
+import uuid
+from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -127,3 +129,22 @@ class Cart(models.Model) :
     cart = models.ForeignKey(Produs, on_delete=models.CASCADE)
     quantity=models.IntegerField()
 
+
+class Comanda(models.Model):
+
+    name = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=13)
+    adress = models.CharField(max_length=300)
+    slug = models.SlugField(max_length=200, null=False, unique=True, blank=True)
+
+
+    def get_absolute_url(self):
+        return reverse('', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = uuid.uuid4()
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name

@@ -81,7 +81,6 @@
             },
             success: function(json) {
                 if(json['delete'] === 'delete') {
-                    console.log('HAIDEEEE pe delete');
                     produs.style.display = 'none';
                     window.location.href = '{% url "store:cart" %}';
 

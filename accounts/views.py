@@ -63,7 +63,7 @@ def accounts_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-            return HttpResponse('registered succesfully and activation sent')
+            return HttpResponse('Contul a fost creeat cu succes, verificati mail-ul si accesati link-ul de activare.')
     else:
         registerForm = RegistrationForm()
     return render(request, 'registration/register.html', {'form': registerForm})

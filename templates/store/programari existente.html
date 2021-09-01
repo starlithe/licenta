@@ -7,14 +7,18 @@
                     <th>Numele clientului</th>
                     <th>Ziua</th>
                     <th>Ora</th>
+                    <th>Status</th>
                 </tr>
+                
                 {%for produs in checked_app %}
                 <tr>
                     <td>{{produs.name}}</td>
                     <td>{{produs.day}}</td>
                     <td>{{produs.appointment}}</td>
+                    <td>{{produs.status}}</td>
                 </tr>
                 {% endfor %}
+                
             </table>
 
             {% comment %} <h3>{{produs.name}}</h3>

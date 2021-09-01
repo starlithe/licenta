@@ -1,7 +1,7 @@
 from core.forms import SearchFormPost
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import JsonResponse
-from .models import Category, Product, Frizer, Pachet, Produs, Cart
+from .models import Category, Product, Frizer, Pachet, Produs, Cart, Comanda
 
 from .forms import SearchForm
 from django.db.models import Q
@@ -111,3 +111,17 @@ def search_global(request):
 
         return redirect(request, 'store/search.html', {'form': form, 'q': q, 'results': results})
 
+
+def create_appointment(request):
+    error = ''
+    form = comandaForm()
+    if request.method == 'POST':
+        form = ComandaForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            error = "comanda nu s-a putut efectua! Reincercati!"
+
+    template_name = 'store/comanda.html'
+
+    return render(request, template_name, {'form': form, 'error': error})
