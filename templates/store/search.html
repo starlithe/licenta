@@ -38,5 +38,31 @@
 
 </div>
 
+<script> 
+    function addcart(id) {
+            console.log(id);
+            const quantity = 1;
+            
+            $.ajax({
+                type: 'POST',
+                url: '{% url "store:add_cart" %}',
+                data: {
+                    produsid: id,
+                    quantity: quantity,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'add',
+                },
+                success: function(json) {
+                    if(json['succes'] === 'succes') {
+                        console.log('HAIDEEEE');
+                    }
+                },
+                error: function (xhr, errmsg, err) {
+
+                }
+            });
+            console.log(quantity);
+        }
+</script> 
 
 {% endblock %}
