@@ -85,7 +85,8 @@ def cart(request):
             produse_cart = get_list_or_404(Cart, utilizator=request.user)
             for i, elem in enumerate(produse_cart):
                 comanda_vietii.cart.add(elem.cart)
-                print('CAcACACAC', elem.cart)
+                
+            # return redirect()
     
     
     produse_cart = Cart.objects.filter()
