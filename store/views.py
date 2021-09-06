@@ -86,7 +86,7 @@ def cart(request):
             for i, elem in enumerate(produse_cart):
                 comanda_vietii.cart.add(elem.cart)
                 
-            # return redirect()
+            return redirect('store:all_products')
     
     
     produse_cart = Cart.objects.filter()
