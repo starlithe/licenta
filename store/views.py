@@ -86,6 +86,11 @@ def cart(request):
             for i, elem in enumerate(produse_cart):
                 comanda_vietii.cart.add(elem.cart)
                 
+            all_products = get_list_or_404(Cart, utilizator=request.user)
+            for i, elem in enumerate(all_products):
+                elem.delete()
+                    
+                    
             return redirect('store:all_products')
     
     
