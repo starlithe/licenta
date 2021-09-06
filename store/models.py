@@ -136,6 +136,7 @@ class Comanda(models.Model):
     phone_number = models.CharField(max_length=13)
     adress = models.CharField(max_length=300)
     slug = models.SlugField(max_length=200, null=False, unique=True, blank=True)
+    cart = models.ManyToManyField(Produs, blank=True)
 
 
     def get_absolute_url(self):

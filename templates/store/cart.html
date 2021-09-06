@@ -1,32 +1,20 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
-    <!-- <div class="container-products">
-        <div class="product-header">
-            <h5 class="product-title">PRODUCT</h5>
-            <h5 class="price sm-hide">PRICE</h5>
-            <h5 class="quantity">QUANTITY</h5>
-            <h5 class="total">TOTAL</h5>
-        </div>
-        {%for produs in produse_cart%}
-        <div class="products">
-            
-            <img src="{{produs.cart.image.url }}" alt=""/>
-            <p>{{produs.cart.title}}</p>
 
-            {{produs.cart.price}}
-            {{produs.quantity}}
+{% if request.user.is_authenticated %}
 
-            <button class="deleteproducts">x</button> 
+    
 
+    <div class="cart-pret" style="position: relative;">
 
+        <div class="bg-pop-up" style="position: absolute; background-color: rgba(255, 255, 255, 1); width: 100%; height: 100%; z-index: 1000; display: block;">
+            <form class="" autocomplete="off" method='POST'>
+                {% csrf_token %}
+                {{form.as_p}}
 
-            
+                <button>Submit</button>
+            </form>
         </div>
         
-        {% endfor %}
-        <h1>{{total}} </h1>
-    </div> -->
-{% if request.user.is_authenticated %}
-    <div class="cart-pret">
         <div class="header">
             <div class="produs">Produse</div>
             <div class="price">Pret</div>
@@ -54,44 +42,46 @@
         </div>
         {% endfor %}
         <h3>Total {{total}} Ron</h3>
-    </div>
-
 
         <div class="submit">
             <button type="submit" name="post" class="comanda">Comanda</button>
         </div>
-    </form>
+    </div>
+
+
     
-    
+
+
+
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
-</body>
 
-<script> 
-    function deletecart(id) {
-        console.log(id);
-        const produs = document.querySelector('#produscos'+id)
-        $.ajax({
-            type: 'POST',
-            url: '{% url "store:delete_cart" %}',
-            data: {
-                produsid: id,
-                csrfmiddlewaretoken: '{{ csrf_token }}',
-                action: 'delete',
-            },
-            success: function(json) {
-                if(json['delete'] === 'delete') {
-                    produs.style.display = 'none';
-                    window.location.href = '{% url "store:cart" %}';
+
+    <script> 
+        function deletecart(id) {
+            console.log(id);
+            const produs = document.querySelector('#produscos'+id)
+            $.ajax({
+                type: 'POST',
+                url: '{% url "store:delete_cart" %}',
+                data: {
+                    produsid: id,
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'delete',
+                },
+                success: function(json) {
+                    if(json['delete'] === 'delete') {
+                        produs.style.display = 'none';
+                        window.location.href = '{% url "store:cart" %}';
+
+                    }
+                },
+                error: function (xhr, errmsg, err) {
 
                 }
-            },
-            error: function (xhr, errmsg, err) {
-
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 
 {%else%}
 <h1 class="error"> Trebuie sa fiti autentificat pentru a vedea cosul. </h1>

@@ -1,9 +1,9 @@
 from core.forms import SearchFormPost
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, get_list_or_404
 from django.http import JsonResponse
 from .models import Category, Product, Frizer, Pachet, Produs, Cart, Comanda
 
-from .forms import SearchForm
+from .forms import SearchForm, ComandaForm
 from django.db.models import Q
 
 def categories(request):
@@ -72,12 +72,28 @@ def search(request):
     return render(request, 'store/search.html',{'form': form, 'q': q, 'results': results, 'error': error})
 
 def cart(request):
+    
+    form = ComandaForm()
+    if request.method == 'POST':
+        form = ComandaForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['name']
+            form.save()
+            
+            
+            comanda_vietii = get_object_or_404(Comanda, name=title)
+            produse_cart = get_list_or_404(Cart, utilizator=request.user)
+            for i, elem in enumerate(produse_cart):
+                comanda_vietii.cart.add(elem.cart)
+                print('CAcACACAC', elem.cart)
+    
+    
     produse_cart = Cart.objects.filter()
     total=0
     for produs in produse_cart.all():
         total = total+ produs.cart.price*produs.quantity
 
-    return render(request, 'store/cart.html', {"produse_cart": produse_cart, "total":total})
+    return render(request, 'store/cart.html', {"produse_cart": produse_cart, "total":total, "form":form})
 
 
 def add_cart(request):
@@ -111,18 +127,3 @@ def test(request):
 
     return render(request, 'store/test.html', {})
 
-
-
-def create_appointment(request):
-    error = ''
-    form = comandaForm()
-    if request.method == 'POST':
-        form = ComandaForm(request.POST)
-        if form.is_valid():
-            form.save()
-        else:
-            error = "comanda nu s-a putut efectua! Reincercati!"
-
-    template_name = 'store/comanda.html'
-
-    return render(request, template_name, {'form': form, 'error': error})
