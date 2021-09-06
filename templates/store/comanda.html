@@ -1,16 +1,36 @@
 {% extends "./base.html" %} {% load static %} {% block content %}
-{% if request.user.is_authenticated %}
+<h1>Programari</h1>
+<div>
+        <div class="unchecked">
+            <table>
+                <tr>
+                    <th>Numele clientului</th>
+                    <th>Ziua</th>
+                    <th>Ora</th>
+                    <th>Status</th>
+                </tr>
+                
+                {%for produs in checked_app %}
+                <tr>
+                    <td>{{produs.name}}</td>
+                    <td>{{produs.day}}</td>
+                    <td>{{produs.appointment}}</td>
+                    <td>{{produs.status}}</td>
+                </tr>
+                {% endfor %}
+                
+            </table>
 
-{% if error %}
-    <h2>{{error}}</h2>
-{% endif %}
+            {% comment %} <h3>{{produs.name}}</h3>
+            <h3>{{produs.phone_number}}</h3>
+            <h3>{{produs.day}}</h3>
+            <h3>{{produs.appointment}}</h3>
+            <h3>{{produs.frizer}}</h3>
+            <h3>{{produs.pachet}}</h3>
+            <h3>{{produs.status}}</h3>
+            <input type="hidden" value="20" /> {% endcomment %}
+        </div>
+    
+</div>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="programare">
-        {{ form.as_p}}
-    </div>
-    <button type="submit" class="programeaza-te">Submit</button>
-</form>
-
-{%endif%}
+{% endblock %}
