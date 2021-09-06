@@ -141,6 +141,9 @@ class Comanda(models.Model):
     def get_absolute_url(self):
         return reverse('', args=[self.slug])
 
+    def get_absolute_url(self):
+        return reverse('store:comanda', args=[self.slug])
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = uuid.uuid4()
@@ -148,3 +151,4 @@ class Comanda(models.Model):
 
     def __str__(self):
         return self.name
+

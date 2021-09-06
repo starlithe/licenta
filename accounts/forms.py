@@ -59,12 +59,11 @@ class UserLoginForm(AuthenticationForm):
 class RegistrationForm(forms.ModelForm):
 
     username = forms.CharField(
-        label='Enter Username', min_length=4, max_length=50, help_text='Required')
+        label='Introduceti numele', min_length=4, max_length=50, help_text='Required')
     email = forms.EmailField(max_length=100, help_text='Required', error_messages={
         'required': 'Sorry, you will need an email'})
-    password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(
-        label='Repeat password', widget=forms.PasswordInput)
+    password = forms.CharField(label='Parola', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repetare parola', widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -97,9 +96,9 @@ class RegistrationForm(forms.ModelForm):
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
         self.fields['password'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Parola noua'})
+            {'class': 'form-control', 'placeholder': 'Parola'})
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control', 'placeholder': 'Repetare parola noua'})
+            {'class': 'form-control', 'placeholder': 'Repetare parola'})
 
 
 class UserEditForm(forms.ModelForm):
